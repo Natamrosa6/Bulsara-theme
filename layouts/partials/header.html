@@ -1,5 +1,23 @@
 <!-- <h1>{{ site.Title }}</h1> -->
 <!-- {{ partial "menu.html" (dict "menuID" "main" "page" .) }} -->
-<div class="logo-container">
-  <img src="/images/logo_color.png" alt="Bulsara Logo" class="logo" />
-</div>
+
+<nav class="flex fixed p-14 z-50 items-center">
+  <!-- Logo -->
+  <div class="logo-container">
+    <img src="/images/logo_color.png" alt="Bulsara Logo" class="logo" />
+  </div>
+
+  <!-- Menú hamburguesa -->
+  <div class="relative content-stretch">
+    <!-- Botón hamburguesa -->
+    <button
+      id="hamburger-button"
+      class="p-4 rounded hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 right-0 text-3xl"
+      aria-expanded="false"
+    >
+      <i class="fa fa-bars"></i>
+    </button>
+
+    {{ partial "menu.html" . }}
+  </div>
+</nav>

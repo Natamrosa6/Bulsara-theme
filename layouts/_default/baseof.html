@@ -6,9 +6,11 @@
   <head>
     {{ partial "head.html" . }}
   </head>
-  <body>
-    <header>{{ partial "header.html" . }}</header>
-    <main class="container">{{ block "main" . }} {{ end }}</main>
+  <body class="flex flex-col h-screen justify-between">
+    <header class="p-4 top-0 right-0 w-full flex justify-end">
+      {{ partial "header.html" . }}
+    </header>
+    <main class="w-full">{{ block "main" . }} {{ end }}</main>
     <footer>{{ partial "footer.html" . }}</footer>
   </body>
 </html>

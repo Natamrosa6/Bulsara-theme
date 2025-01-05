@@ -8,20 +8,20 @@ pageRef = '/'
 weight = 10
 
 [[menus.main]]
-name = 'Posts'
-pageRef = '/posts'
-weight = 20
+name = 'Blog'
+pageRef = '/blog'
+weight = 0
 
-[[menus.main]]
-name = 'Tags'
-pageRef = '/tags'
-weight = 50
+# [[menus.main]]
+# name = 'Tags'
+# pageRef = '/tags'
+# weight = 0
 
 [[menus.main]]
 identifier = 'About-Us'
 name = 'About Us'
 pageRef = '/About-Us'
-weight = 30
+weight = 20
 
 [[menus.main]]
 identifier = 'Contact-Us'
@@ -29,9 +29,17 @@ name = 'Contact Us'
 pageRef = '/Contact-Us'
 weight = 40
 
+[[menus.main]]
+identifier = 'photo-album'
+name = 'Photos'
+pageRef = '/photo-album'
+weight = 30
+
 [params]
     contactPhoneNumber = "+34606729279"
     contactEmail = "bulsara.tributo@gmail.com"
+    instagramLink = "https://www.instagram.com/bulsaratributo/profilecard/?igsh=MmRxYWFhZmlhaW0w"
+    facebookLink = "https://www.facebook.com/people/Bulsara-Tributo-A-Queen/pfbid0hAcZGHjeJAGaBAQQ8aZ3KXsrMHaT9JzU3UEqmV1BmKX12snmz3gVhPcqiJ1UJo5Fl/?mibextid=wwXIfr&rdid=fHm1PQA5rFpgz7JZ&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fef4i9wvYpDNP41PP%2F%3Fmibextid%3DwwXIfr"
 
 
 [module]

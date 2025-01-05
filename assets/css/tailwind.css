@@ -25,17 +25,17 @@
   }
   
   header {
-    position: fixed;
-    top: 0;
-    left: 0;
+    /* position: fixed; */
+    /* top: 0;
+    left: 0; */
     width: 100%;
-    background-color: #000;
+    /* background-color: #000; */
     z-index: 1000;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
     padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); */
   }
   
   body {
@@ -101,6 +101,7 @@
   p {
     font-size: 21.3333px;
     text-align: center;
+    @apply p-2;
   }
   
   h1 {
@@ -244,10 +245,12 @@
     
   }
 
+  img {
+    @apply object-cover object-center max-w-full rounded;
+    display: inline-flex;
+  }
   
-/* @import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+/*
 
 
 @layer base {
