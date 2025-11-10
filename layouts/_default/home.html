@@ -1,7 +1,113 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
+<div class="w-full">
+  {{ partial "hero.html" . }}
+
+  <section id="index-contact" class="bg-black text-white py-20 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-8">
+        <img
+          src="/images/logo_color.png"
+          alt="Bulsara Logo"
+          class="mx-auto w-78"
+        />
+      </div>
+
+      <div class="mb-12">
+        <p class="text-3xl leading-relaxed mb-4">
+          Live again the magic of one of a kind band
+        </p>
+        <p class="text-2xl leading-relaxed">
+          Live the Queen experience with Bulsara!
+        </p>
+      </div>
+
+      <div class="mb-16">
+        <a
+          href="/contact-us/#contact-us"
+          class="bg-white font-bold text-black px-8 text-lg py-4 rounded hover:bg-gray-200 transition inline-block"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {{ range .Pages }}
+    {{ if eq .Section "blog" }}
+    <!-- Blog Section -->
+    <section class="py-16 px-4 bg-black">
+      <div class="max-w-6xl mx-auto">
+        <span class="heading-t"></span>
+        <h1 class="text-2xl mb-8 text-center">
+          <a href="{{ .RelPermalink }}" class="text-white hover:text-orange-200">{{ .LinkTitle }}</a>
+        </h1>
+        <span class="heading-b"></span>
+
+        <div class="mt-10 flex flex-col gap-4">
+          {{ range .Pages | first 3 }}
+          <div class="mx-auto max-w-3xl">
+            <div class="flex gap-3 border border-gray-300 rounded-xl overflow-hidden items-center justify-start bg-gray-900">
+              {{ if .Params.image }}
+              <div class="relative w-32 h-32 flex-shrink-0">
+                <img
+                  class="absolute left-0 top-0 w-full h-full object-cover object-center transition duration-50"
+                  loading="lazy"
+                  src="{{ .Params.image }}"
+                  alt="{{ .LinkTitle }}"
+                />
+              </div>
+              {{ end }}
+
+              <div class="flex flex-col gap-1 py-4 px-4 flex-1">
+                <h2 class="text-xl font-bold">
+                  <a href="{{ .RelPermalink }}" class="text-white hover:text-orange-200">{{ .LinkTitle }}</a>
+                </h2>
+                {{ if .Params.description }}
+                <p class="text-gray-400">
+                  {{ .Params.description | strings.Truncate 130 }}
+                </p>
+                {{ else if .Summary }}
+                <p class="text-gray-400">
+                  {{ .Summary | strings.Truncate 130 }}
+                </p>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+
+    {{ else if eq .Section "photo-album" }}
+    <!-- Photos Section -->
+    <section class="py-16 px-4 bg-black">
+      <div class="max-w-6xl mx-auto">
+        <span class="heading-t"></span>
+        <h1 class="text-2xl mb-8 text-center">
+          <a href="{{ .RelPermalink }}" class="text-white hover:text-orange-200">{{ .LinkTitle }}</a>
+        </h1>
+        <span class="heading-b"></span>
+
+        <div class="mt-10">
+          {{ partial "photo-carousel.html" . }}
+        </div>
+      </div>
+    </section>
+    {{ end }}
   {{ end }}
+
+  <!-- Navigation Links - Vertical (before footer) -->
+  <section class="bg-gray-900 py-12 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="footer-links">
+        {{ range .Site.Menus.main }}
+          {{ if ne .Identifier "home" }}
+            <a href="{{ .URL }}" class="footer-link">{{ .Name }}</a>
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </section>
+</div>
 {{ end }}

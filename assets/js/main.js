@@ -12,34 +12,40 @@ document.addEventListener("scroll", function () {
         }
     }
 });
-document.addEventListener('DOMContentLoaded', function () {
-    console.log('DOM cargado');
+// document.addEventListener('DOMContentLoaded', function () {
+//     console.log('DOM cargado');
 
-    const hamburgerButton = document.getElementById('hamburger-button');
-    const hamburgerMenu = document.getElementById('hamburger-menu');
+//     const hamburgerButton = document.getElementById('hamburger-button');
+//     const hamburgerMenu = document.getElementById('hamburger-menu');
 
-    if (hamburgerButton && hamburgerMenu) {
-        console.log('Botón y menú encontrados');
+//     if (hamburgerButton && hamburgerMenu) {
+//         console.log('Botón y menú encontrados');
 
-        hamburgerButton.addEventListener('click', function (event) {
-            event.stopPropagation(); // Evita que el clic se propague al documento
-            hamburgerMenu.classList.toggle('hidden'); // Alterna la clase "hidden"
-            const isExpanded = hamburgerButton.getAttribute('aria-expanded') === 'true';
-            hamburgerButton.setAttribute('aria-expanded', !isExpanded);
-            console.log('Menú alternado');
-        });
+//         // hamburgerButton.addEventListener('click', function (event) {
+//         //     // event.stopPropagation(); // Evita que el clic se propague al documento
+//         //     // Alterna la visibilidad del menú usando display
+//         //     const isHidden = hamburgerMenu.style.display === 'none' || hamburgerMenu.style.display === '';
+//         //     hamburgerMenu.style.display = isHidden ? 'block' : 'none';
+//         //     const isExpanded = hamburgerButton.getAttribute('aria-expanded') === 'true';
+//         //     hamburgerButton.setAttribute('aria-expanded', !isExpanded);
+//         //     console.log('isHidden', isHidden);
+//         //     console.log('Menú alternado', isHidden ? 'visible' : 'oculto');
+//         // });
 
-        document.addEventListener('click', function (event) {
-            if (!hamburgerButton.contains(event.target) && !hamburgerMenu.contains(event.target)) {
-                hamburgerMenu.classList.add('hidden');
-                hamburgerButton.setAttribute('aria-expanded', 'false');
-                console.log('Menú cerrado');
-            }
-        });
-    } else {
-        console.error('No se encontraron el botón o el menú');
-    }
-});
+//         // document.addEventListener('click', function (event) {
+//         //     if (!hamburgerButton.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+//         //         hamburgerMenu.style.display = 'none';
+//         //         hamburgerButton.setAttribute('aria-expanded', 'false');
+//         //         console.log('Menú cerrado');
+//         //     }
+//         // });
+//     } else {
+//         console.error('No se encontraron el botón o el menú', {
+//             button: hamburgerButton,
+//             menu: hamburgerMenu
+//         });
+//     }
+// });
 
 document.addEventListener('DOMContentLoaded', function () {
     const lightbox = document.getElementById('lightbox');
@@ -60,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Cerrar el lightbox al hacer clic en el botón de cierre
-    closeButton.addEventListener('click', () => {
+    closeButton?.addEventListener('click', () => {
         lightbox.classList.add('hidden');
     });
 
@@ -70,13 +76,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Navegar a la imagen anterior
-    prevButton.addEventListener('click', () => {
+    prevButton?.addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
         showImage();
     });
 
     // Navegar a la imagen siguiente
-    nextButton.addEventListener('click', () => {
+    nextButton?.addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % images.length;
         showImage();
     });
@@ -84,11 +90,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     const carousel = document.getElementById('carousel');
-    const images = carousel.children;
+    const images = carousel?.children;
     let currentIndex = 0;
 
     function showNextImage() {
-        currentIndex = (currentIndex + 1) % images.length;
+        currentIndex = (currentIndex + 1) % images?.length;
         const offset = -currentIndex * 100;
         carousel.style.transform = `translateX(${offset}%)`;
     }
@@ -99,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     const carousel = document.getElementById('carousel');
-    const images = carousel.children;
+    const images = carousel?.children;
     const prevButton = document.getElementById('prev-button');
     const nextButton = document.getElementById('next-button');
     let currentIndex = 0;
@@ -110,20 +116,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function showNextImage() {
-        currentIndex = (currentIndex + 1) % images.length;
+        currentIndex = (currentIndex + 1) % images?.length;
         showImage(currentIndex);
     }
 
     function showPrevImage() {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        currentIndex = (currentIndex - 1 + images?.length) % images?.length;
         showImage(currentIndex);
     }
 
     // Evento para botón "Siguiente"
-    nextButton.addEventListener('click', showNextImage);
+    nextButton?.addEventListener('click', showNextImage);
 
     // Evento para botón "Anterior"
-    prevButton.addEventListener('click', showPrevImage);
+    prevButton?.addEventListener('click', showPrevImage);
 
     // Cambiar imagen automáticamente cada 5 segundos
     setInterval(showNextImage, 5000);

@@ -1,30 +1,32 @@
-<section id="hero" class="relative w-full h-screen overflow-hidden">
+<section id="hero" style="position: relative; width: 100%; height: 100vh; overflow: hidden; background: linear-gradient(to bottom, #1e3a8a, #000000); z-index: 1;">
   <div
     id="carousel"
-    class="absolute inset-0 flex transition-transform duration-700"
+    style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; transition: transform 700ms;"
   >
-    {{ range readDir "static/images/hero" }}
-    <div class="w-full h-full flex-shrink-0">
-      <img
-        src="images/hero/{{ .Name }}"
-        alt=""
-        class="w-full h-full object-cover"
-      />
-    </div>
-
+    {{ $heroImages := readDir "static/images/hero" }}
+    {{ if $heroImages }}
+      {{ range $heroImages }}
+      <div style="width: 100%; height: 100%; flex-shrink: 0;">
+        <img
+          src="/images/hero/{{ .Name }}"
+          alt=""
+          style="width: 100%; height: 100%; object-fit: cover;"
+        />
+      </div>
+      {{ end }}
+    {{ else }}
+      <!-- Fallback: fondo azul oscuro si no hay imágenes -->
+      <div style="width: 100%; height: 100%; flex-shrink: 0; background: linear-gradient(to bottom, #1e3a8a, #000000);"></div>
     {{ end }}
-    </div>
-    <div
-      class="absolute inset-0 flex flex-col justify-center items-start px-8 z-10"
-      style="margin-left: 10%; margin-top: 10%"
-      ;
-    >
-      <p class="text-6xl text-white bg-black px-4 py-2 inline-block">
-        Queen Tribute
-      </p>
-      <p class="mt-4 text-xl text-white bg-black px-4 py-2 inline-block">
-        Live again the magic of one of a kind band
-      </p>
-    </div>
+  </div>
+  <div
+    style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 2rem; z-index: 10; margin-left: 10%; margin-top: 10%;"
+  >
+    <p style="font-size: 3.75rem; line-height: 1; color: white; background-color: black; padding: 0.5rem 1rem; display: inline-block;">
+      Queen Tribute
+    </p>
+    <p style="margin-top: 1rem; font-size: 1.25rem; line-height: 1.75rem; color: white; background-color: black; padding: 0.5rem 1rem; display: inline-block;">
+      Live again the magic of one of a kind band
+    </p>
   </div>
 </section>
