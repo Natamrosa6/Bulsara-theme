@@ -1,0 +1,17 @@
+<div class="">
+  <ul
+    id="hamburger-menu"
+    class="absolute hidden right-0 mt-2 w-48 text-white rounded shadow-lg bg-gray-900"
+    role="menu"
+  >
+    {{- $currentPage := . -}} {{ range .Site.Menus.main.ByWeight -}}
+    <li class='{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}'>
+      <a
+        href="{{ .URL | absLangURL }}"
+        class="block px-4 py-2 hover:bg-orange-200 hover:text-black"
+        >{{ .Name }}</a
+      >
+    </li>
+    {{- end }}
+  </ul>
+</div>
