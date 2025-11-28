@@ -1,5 +1,3 @@
-<!-- Menú desplegable -->
-
 <div class="">
   <ul
     id="hamburger-menu"
@@ -8,11 +6,6 @@
   >
     {{- $currentPage := . -}} {{ range .Site.Menus.main.ByWeight -}}
     <li class='{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}'>
-      <!-- <a
-        href="{{ .PageRef }}"
-        class="block px-4 py-2 hover:bg-orange-200 hover:text-black"
-        >{{ i18n .Identifier }}</a
-      > -->
       <a
         href="{{ .URL | absLangURL }}"
         class="block px-4 py-2 hover:bg-orange-200 hover:text-black"
