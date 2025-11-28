@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Natamrosa6/Bulsara-theme#readme",
   "devDependencies": {
+    "@j178/prek": "^0.2.19",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17"

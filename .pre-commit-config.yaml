@@ -1,0 +1,15 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+
+  - repo: local
+    hooks:
+      - id: build
+        name: Build the final CSS
+        entry: npm run build
+        language: system
+        stages: [pre-commit]
+        pass_filenames: false
