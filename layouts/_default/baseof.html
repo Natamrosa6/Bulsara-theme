@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html
+  lang="{{ site.Language.LanguageCode }}"
+  dir="{{ or site.Language.LanguageDirection `ltr` }}"
+>
+  <head>
+    {{ partial "head.html" . }}
+
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe@4.1.3/dist/photoswipe.css" />
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe@4.1.3/dist/default-skin/default-skin.css" />
+
+  <script defer src="https://unpkg.com/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script defer src="https://unpkg.com/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  </head>
+  <body class="flex flex-col h-screen justify-between">
+      <header class="p-4 top-0 right-0 w-full flex justify-end">
+          {{ partial "header.html" . }}
+        </header>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var btn = document.getElementById("hamburger-button");
+        var menu = document.getElementById("hamburger-menu");
+        if (!btn || !menu) return;
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          menu.classList.toggle("hidden");
+          var isExpanded = btn.getAttribute("aria-expanded") === "true";
+          btn.setAttribute("aria-expanded", (!isExpanded).toString());
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!btn.contains(e.target) && !menu.contains(e.target)) {
+            menu.classList.add("hidden");
+            btn.setAttribute("aria-expanded", "false");
+          }
+        });
+      });
+    </script>
+        <main class="w-full">{{ block "main" . }} {{ end }}</main>
+      <footer>{{ partial "footer.html" . }}</footer>
+    <script src="/js/main.js" defer></script>
+  </body>
+</html>
