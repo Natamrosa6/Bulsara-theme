@@ -1,0 +1,30 @@
+<section id="hero" class="relative w-full h-screen overflow-hidden">
+  <div
+    id="carousel"
+    class="absolute inset-0 flex transition-transform duration-700"
+  >
+    {{ range readDir "static/images/hero" }}
+    <div class="w-full h-full flex-shrink-0">
+      <img
+        src="images/hero/{{ .Name }}"
+        alt=""
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    {{ end }}
+    </div>
+    <div
+      class="absolute inset-0 flex flex-col justify-center items-start px-8 z-10"
+      style="margin-left: 10%; margin-top: 10%"
+      ;
+    >
+      <p class="text-6xl text-white bg-black px-4 py-2 inline-block">
+        Queen Tribute
+      </p>
+      <p class="mt-4 text-xl text-white bg-black px-4 py-2 inline-block">
+        Live again the magic of one of a kind band
+      </p>
+    </div>
+  </div>
+</section>

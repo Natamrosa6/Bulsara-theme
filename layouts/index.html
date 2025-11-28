@@ -1,0 +1,71 @@
+{{ define "main" }}
+
+<div class="w-full">
+  <!-- <h1>{{ .Title }}</h1> -->
+
+  {{ partial "hero.html" . }}
+
+  <section id="index-contact" class="bg-black text-white py-16 text-center">
+    <div class="mb-8">
+      <img
+        src="/images/logo_color.png"
+        alt="Bulsara Logo"
+        class="mx-auto w-78"
+      />
+    </div>
+
+    <div class="mb-8">
+      <p class="text-3xl leading-relaxed">
+        Live again the magic of one of a kind band<br />
+        Live the Queen experience with Bulsara!
+      </p>
+    </div>
+
+    <div>
+      <a
+        href="/contact-us/#contact-us"
+        class="bg-white font-bold text-black px-8 text-lg py-4 rounded hover:bg-gray-200 transition"
+      >
+        Contact
+      </a>
+    </div>
+  </section>
+
+  {{ range .Pages }}
+
+  <!-- Blog subsection -->
+
+  {{ if eq .Section "blog" }}
+  <span class="heading-t"></span>
+  <h1 class="text-2xl">
+    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+  </h1>
+  <span class="heading-b"></span>
+
+  {{ range .Pages | first 2 }}
+  <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+  {{ .Summary }} {{ end }}
+
+  <!-- Photo subsection -->
+
+  {{ else if eq .Section "photo-album"}}
+  <span class="heading-t"></span>
+  <h1 class="text-2xl">
+    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+  </h1>
+  <span class="heading-b"></span>
+
+  <!-- TODO: Averiguar cómo poner solo un conjunto de las fotos y considerar meterlas en modod grid -->
+
+  <div
+    class="w-2/3 content-center self-center items-center place-content-center justify-center inline-block"
+  >
+    <div
+      class="content-center self-center items-center place-content-center justify-center object-position-center"
+    >
+      {{ partial "image-gallery.html" . }}
+    </div>
+  </div>
+  {{ end }} {{ end }}
+</div>
+{{ end }}

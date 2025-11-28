@@ -1,0 +1,114 @@
+baseURL = 'https://example.org/'
+defaultContentLanguage = 'es'
+defaultContentLanguageInSubdir = false
+languageCode = "es"
+title = 'Bulsara'
+
+# Multi-lang Setting
+[languages]
+[languages.en]
+contentDir = 'content/en'
+disabled = false
+languageCode = 'en-US'
+languageDirection = 'ltr'
+languageName = "English"
+weight = 2
+# baseURL = "/en/"
+
+[languages.en.taxonomies]
+category = "categories"
+tag = "tags"
+
+[languages.es]
+contentDir = 'content/es'
+disabled = false
+languageCode = 'es'
+languageDirection = 'ltr'
+languageName = "Español"
+weight = 1
+# baseURL = "/"
+
+[languages.es.taxonomies]
+category = "categorias"
+tag = "etiquetas"
+
+[[languages.en.menu.main]]
+identifier = 'home'
+name = 'Home'
+pageRef = '/en/'
+weight = 10
+
+[[languages.en.menu.main]]
+name = 'Blog'
+pageRef = '/en/blog'
+weight = 0
+
+# [[menu.main]]
+# name = 'Tags'
+# pageRef = '/tags'
+# weight = 0
+
+[[languages.en.menu.main]]
+identifier = 'about-Us'
+name = 'About-Us'
+pageRef = '/en/about-Us'
+weight = 20
+
+[[languages.en.menu.main]]
+identifier = 'contact-Us'
+name = 'Contact-Us'
+pageRef = '/en/contact-Us'
+weight = 40
+
+[[languages.en.menu.main]]
+identifier = 'photo-album'
+name = 'Photos'
+pageRef = '/en/photo-album'
+weight = 30
+
+
+[[languages.es.menu.main]]
+identifier = 'home'
+name = 'Inicio'
+pageRef = '/'
+weight = 10
+
+[[languages.es.menu.main]]
+name = 'Blog'
+pageRef = '/blog'
+weight = 0
+
+# [[menu.main]]
+# name = 'Tags'
+# pageRef = '/tags'
+# weight = 0
+
+[[languages.es.menu.main]]
+identifier = 'About-Us'
+name = 'Sobre Nosotros'
+pageRef = '/About-Us'
+weight = 20
+
+[[languages.es.menu.main]]
+identifier = 'Contact-Us'
+name = 'Contáctanos'
+pageRef = '/Contact-Us'
+weight = 40
+
+[[languages.es.menu.main]]
+identifier = 'photo-album'
+name = 'Fotos'
+pageRef = '/photo-album'
+weight = 30
+
+[params]
+contactPhoneNumber = "+34606729279"
+contactEmail = "bulsara.tributo@gmail.com"
+instagramLink = "https://www.instagram.com/bulsaratributo/profilecard/?igsh=MmRxYWFhZmlhaW0w"
+facebookLink = "https://www.facebook.com/people/Bulsara-Tributo-A-Queen/pfbid0hAcZGHjeJAGaBAQQ8aZ3KXsrMHaT9JzU3UEqmV1BmKX12snmz3gVhPcqiJ1UJo5Fl/?mibextid=wwXIfr&rdid=fHm1PQA5rFpgz7JZ&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fef4i9wvYpDNP41PP%2F%3Fmibextid%3DwwXIfr"
+
+
+[module]
+[module.hugoVersion]
+extended = false
+min = "0.116.0"
