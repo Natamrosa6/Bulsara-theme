@@ -13,20 +13,20 @@ languageCode = 'en-US'
 languageDirection = 'ltr'
 languageName = "English"
 weight = 2
-# baseURL = "/en/"
+baseURL = "/en/"
 
 [languages.en.taxonomies]
 category = "categories"
 tag = "tags"
 
 [languages.es]
-contentDir = 'content/es'
+contentDir = 'content/'
 disabled = false
 languageCode = 'es'
 languageDirection = 'ltr'
 languageName = "Español"
 weight = 1
-# baseURL = "/"
+baseURL = "/"
 
 [languages.es.taxonomies]
 category = "categorias"
