@@ -1,15 +1,16 @@
 console.log('This site was made by Natalia with <3.');
 
-// Logo fade out on scroll
 document.addEventListener("scroll", function () {
-    const logo = document.querySelector(".logo");
-    if (logo) {
-        if (window.scrollY > 100) {
-            logo.style.opacity = "0";
-            logo.style.transition = "opacity 2s ease";
-        } else {
-            logo.style.opacity = "1";
-        }
+    const logo = document.querySelector(".logo-container .logo");
+    if (!logo) return;
+    const link = logo.closest('a');
+    if (window.scrollY > 100) {
+        logo.style.opacity = "0";
+        logo.style.transition = "opacity 2s ease";
+        if (link) link.style.pointerEvents = "none";
+    } else {
+        logo.style.opacity = "1";
+        if (link) link.style.pointerEvents = "auto";
     }
 });
 // document.addEventListener('DOMContentLoaded', function () {
