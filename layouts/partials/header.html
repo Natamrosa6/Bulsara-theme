@@ -1,0 +1,24 @@
+<!-- Logo (posicionado independientemente con CSS) -->
+<div class="logo-container" style="position: fixed; top: 10px; left: 10px; z-index: 1000; background-color: transparent; padding: 10px;">
+  <img src="/images/logo_color.png" alt="Bulsara Logo" class="logo" style="width: 350px !important; height: auto !important; max-width: none !important; max-height: none !important; transition: opacity 3s ease, visibility 0.3s ease;" />
+</div>
+
+<!-- Menú hamburguesa -->
+<nav style="position: fixed; top: 0; right: 0; padding: 1rem; z-index: 1000; pointer-events: none;">
+  <div style="position: relative; pointer-events: auto;">
+    <!-- Botón hamburguesa -->
+    <button
+      type="button"
+      id="hamburger-button"
+      style="padding: 1rem; border-radius: 0.25rem; background-color: transparent; border: none; color: white; font-size: 1.875rem; line-height: 2.25rem; cursor: pointer;"
+      aria-expanded="false"
+      aria-label="Toggle menu"
+      onmouseover="this.style.backgroundColor='rgb(17, 24, 39)'"
+      onmouseout="this.style.backgroundColor='transparent'"
+    >
+      <i class="fa fa-bars"></i>
+    </button>
+
+    {{ partial "menu.html" . }}
+  </div>
+</nav>

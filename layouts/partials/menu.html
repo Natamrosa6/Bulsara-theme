@@ -1,0 +1,33 @@
+<!-- Menú desplegable -->
+
+<div class="">
+  <!-- Botón menú hamburguesa -->
+  <!-- <button
+    id="hamburger-button"
+    class="p-4 rounded hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 right-0 text-3xl"
+    aria-expanded="false"
+    aria-label="Abrir menú"
+  >
+    <i class="fa fa-bars"></i>
+  </button> -->
+  <ul
+    id="hamburger-menu"
+    class="absolute hidden right-0 mt-2 w-48 text-white rounded shadow-lg bg-gray-900"
+    role="menu"
+  >
+    {{- $currentPage := . -}} {{ range .Site.Menus.main.ByWeight -}}
+    <li class='{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}'>
+      <!-- <a
+        href="{{ .PageRef }}"
+        class="block px-4 py-2 hover:bg-orange-200 hover:text-black"
+        >{{ i18n .Identifier }}</a
+      > -->
+      <a
+        href="{{ .URL | absLangURL }}"
+        class="block px-4 py-2 hover:bg-orange-200 hover:text-black"
+        >{{ .Name }}</a
+      >
+    </li>
+    {{- end }}
+  </ul>
+</div>

@@ -1,5 +1,35 @@
 {
+  "name": "bulsara-theme",
+  "version": "1.0.0",
+  "description": "## Features",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tailwindcss build -i assets/css/tailwind.css -o assets/css/main.css",
+    "watch": "npx tailwindcss build -i assets/css/tailwind.css -o assets/css/main.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Natamrosa6/Bulsara-theme.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Natamrosa6/Bulsara-theme/issues"
+  },
+  "homepage": "https://github.com/Natamrosa6/Bulsara-theme#readme",
   "devDependencies": {
-    "@j178/prek": "^0.2.19"
+    "@j178/prek": "^0.2.19",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.469.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7"
   }
 }
