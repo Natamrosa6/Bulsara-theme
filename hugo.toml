@@ -4,7 +4,6 @@ defaultContentLanguageInSubdir = false
 languageCode = "es"
 title = 'Bulsara'
 
-# Multi-lang Setting
 [languages]
 [languages.en]
 contentDir = 'content/en'
@@ -13,7 +12,6 @@ languageCode = 'en-US'
 languageDirection = 'ltr'
 languageName = "English"
 weight = 2
-# baseURL = "/en/"
 
 [languages.en.taxonomies]
 category = "categories"
@@ -26,7 +24,6 @@ languageCode = 'es'
 languageDirection = 'ltr'
 languageName = "Español"
 weight = 1
-# baseURL = "/"
 
 [languages.es.taxonomies]
 category = "categorias"
@@ -43,10 +40,6 @@ name = 'Blog'
 pageRef = '/en/blog'
 weight = 0
 
-# [[menu.main]]
-# name = 'Tags'
-# pageRef = '/tags'
-# weight = 0
 
 [[languages.en.menu.main]]
 identifier = 'about-Us'
@@ -78,10 +71,6 @@ name = 'Blog'
 pageRef = '/blog'
 weight = 0
 
-# [[menu.main]]
-# name = 'Tags'
-# pageRef = '/tags'
-# weight = 0
 
 [[languages.es.menu.main]]
 identifier = 'About-Us'
@@ -101,12 +90,21 @@ name = 'Fotos'
 pageRef = '/photo-album'
 weight = 30
 
+[languages.en.params]
+homeHeroText = "Live again the magic of one of a kind band. Live the Queen experience with Bulsara!"
+contactButtonText = "Contact Us"
+
+[languages.es.params]
+homeHeroText = "Vuelve a vivir la magia de una banda única. Vive la experiencia Queen con Bulsara."
+contactButtonText = "Contáctanos"
+
 [params]
 contactPhoneNumber = "+34606729279"
 contactEmail = "bulsara.tributo@gmail.com"
 instagramLink = "https://www.instagram.com/bulsaratributo/profilecard/?igsh=MmRxYWFhZmlhaW0w"
 facebookLink = "https://www.facebook.com/people/Bulsara-Tributo-A-Queen/pfbid0hAcZGHjeJAGaBAQQ8aZ3KXsrMHaT9JzU3UEqmV1BmKX12snmz3gVhPcqiJ1UJo5Fl/?mibextid=wwXIfr&rdid=fHm1PQA5rFpgz7JZ&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fef4i9wvYpDNP41PP%2F%3Fmibextid%3DwwXIfr"
 
+contactButtonText = "Contact Us"
 
 [module]
 [module.hugoVersion]

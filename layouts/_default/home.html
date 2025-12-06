@@ -22,11 +22,12 @@
       </div>
 
       <div class="mb-16">
+
         <a
           href="/contact-us/#contact-us"
           class="bg-white font-bold text-black px-8 text-lg py-4 rounded hover:bg-gray-200 transition inline-block"
         >
-          Contact Us
+          {{ .Site.Params.contactButtonText }}
         </a>
       </div>
     </div>
@@ -34,7 +35,6 @@
 
   {{ range .Pages }}
     {{ if eq .Section "blog" }}
-    <!-- Blog Section -->
     <section class="py-16 px-4 bg-black">
       <div class="max-w-6xl mx-auto">
         <span class="heading-t"></span>
@@ -80,7 +80,6 @@
     </section>
 
     {{ else if eq .Section "photo-album" }}
-    <!-- Photos Section -->
     <section class="py-16 px-4 bg-black">
       <div class="max-w-6xl mx-auto">
         <span class="heading-t"></span>
@@ -97,7 +96,6 @@
     {{ end }}
   {{ end }}
 
-  <!-- Navigation Links - Vertical (before footer) -->
   <section class="bg-gray-900 py-12 text-center">
     <div class="max-w-4xl mx-auto px-4">
       <div class="footer-links">
