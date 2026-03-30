@@ -1,4 +1,130 @@
-console.log('This site was made by Natalia with <3.');
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+
+const collectFormData = (form) => Object.fromEntries(new FormData(form));
+
+const validateFields = (data) => {
+  const rules = [
+    { field: 'name',          test: (v) => v.trim().length >= 2,            message: 'Por favor, escribe tu nombre.' },
+    { field: 'email',         test: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), message: 'Introduce un correo válido.' },
+    { field: 'subject_field', test: (v) => v.trim().length >= 3,            message: 'El asunto es demasiado corto.' },
+    { field: 'message',       test: (v) => v.trim().length >= 10,           message: 'El mensaje debe tener al menos 10 caracteres.' },
+  ];
+  return rules.filter(({ field, test }) => !test(data[field] ?? ''));
+};
+
+const submitToWeb3Forms = async (formData) => {
+  const payload = { ...formData, subject_field: undefined };
+  payload.subject = `[Bulsara] ${formData.subject_field ?? 'Nuevo mensaje'}`;
+
+  const response = await fetch(WEB3FORMS_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  const json = await response.json();
+  return { success: json.success === true, message: json.message ?? '' };
+};
+
+const markFieldInvalid = (form, fieldName, message) => {
+  const input = form.querySelector(`[name="${fieldName}"]`);
+  const errorEl = input?.closest('.form-group')?.querySelector('.cf-field-error');
+  if (!input || !errorEl) return;
+
+  input.classList.add('cf-input-error');
+  errorEl.textContent = message;
+
+  input.addEventListener('input', () => {
+    input.classList.remove('cf-input-error');
+    errorEl.textContent = '';
+  }, { once: true });
+};
+
+const clearFieldErrors = (form) => {
+  form.querySelectorAll('.cf-input-error').forEach((el) => el.classList.remove('cf-input-error'));
+  form.querySelectorAll('.cf-field-error').forEach((el) => { el.textContent = ''; });
+};
+
+const setButtonLoading = (btn, isLoading) => {
+  const label = btn.querySelector('.cf-btn-label');
+  const spinner = btn.querySelector('.cf-btn-spinner');
+  btn.disabled = isLoading;
+  btn.classList.toggle('cf-btn-loading', isLoading);
+  if (label)  label.hidden = isLoading;
+  if (spinner) spinner.hidden = !isLoading;
+};
+
+const showErrorBanner = (banner, message) => {
+  banner.textContent = message;
+  banner.hidden = false;
+};
+
+const hideErrorBanner = (banner) => { banner.hidden = true; banner.textContent = ''; };
+
+const showSuccess = (wrapper) => {
+  const overlay = wrapper.querySelector('#cf-success');
+  const form    = wrapper.querySelector('#contact-form');
+  if (!overlay || !form) return;
+  form.hidden    = true;
+  overlay.hidden = false;
+  overlay.removeAttribute('aria-hidden');
+};
+
+const resetForm = (wrapper) => {
+  const overlay = wrapper.querySelector('#cf-success');
+  const form    = wrapper.querySelector('#contact-form');
+  if (!overlay || !form) return;
+  form.reset();
+  form.hidden    = false;
+  overlay.hidden = true;
+  overlay.setAttribute('aria-hidden', 'true');
+};
+
+const initContactForm = () => {
+  const wrapper  = document.getElementById('contact-form-wrapper');
+  if (!wrapper) return;
+
+  const form      = wrapper.querySelector('#contact-form');
+  const submitBtn = wrapper.querySelector('#cf-submit-btn');
+  const errorBanner = wrapper.querySelector('#cf-error-banner');
+  const resetBtn  = wrapper.querySelector('#cf-reset-btn');
+
+  resetBtn?.addEventListener('click', () => resetForm(wrapper));
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    hideErrorBanner(errorBanner);
+    clearFieldErrors(form);
+
+    const data   = collectFormData(form);
+    const errors = validateFields(data);
+
+    if (errors.length > 0) {
+      errors.forEach(({ field, message }) => markFieldInvalid(form, field, message));
+      const firstInvalid = form.querySelector('.cf-input-error');
+      firstInvalid?.classList.add('cf-shake');
+      firstInvalid?.addEventListener('animationend', () => firstInvalid.classList.remove('cf-shake'), { once: true });
+      return;
+    }
+
+    setButtonLoading(submitBtn, true);
+
+    try {
+      const result = await submitToWeb3Forms(data);
+      if (result.success) {
+        showSuccess(wrapper);
+      } else {
+        showErrorBanner(errorBanner, 'Algo salió mal. Por favor, inténtalo de nuevo.');
+      }
+    } catch {
+      showErrorBanner(errorBanner, 'Error de red. Comprueba tu conexión e inténtalo de nuevo.');
+    } finally {
+      setButtonLoading(submitBtn, false);
+    }
+  });
+};
+
+document.addEventListener('DOMContentLoaded', initContactForm);
 
 document.addEventListener("scroll", function () {
     const logo = document.querySelector(".logo-container .logo");

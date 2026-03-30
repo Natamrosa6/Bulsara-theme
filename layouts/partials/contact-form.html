@@ -1,65 +1,92 @@
-<div class="contact-section">
-  <strong> {{ .Site.Params.contactUsText }} </strong>
+<section class="contact-section" aria-labelledby="contact-heading">
 
-  <!-- Contact Form Wrapper -->
-  <div class="contact-form-wrapper">
-    <!-- Replacing <form ... wpcf7-form> with a simpler HTML form -->
-    <form class="contact-form" action="/en/contact" method="post" novalidate>
-      <!-- If you need hidden fields (like recaptcha tokens, IDs, etc.), add them here -->
-      <input type="hidden" name="form_id" value="contactFormEn" />
+  <div class="contact-form-wrapper cf-animate-in" id="contact-form-wrapper">
 
+    <div class="cf-success-overlay" id="cf-success" aria-live="polite" aria-hidden="true" hidden>
+      <div class="cf-success-inner">
+        <div class="cf-checkmark" aria-hidden="true" style="width: 80px; height: 80px; margin: 0 auto 1.5rem;">
+          <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+            <circle class="cf-check-circle" cx="26" cy="26" r="24" stroke="#e2724d" stroke-width="2"/>
+            <path class="cf-check-tick" d="M14 26 L22 34 L38 18" stroke="#e2724d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p class="cf-success-title">¡Mensaje enviado!</p>
+        <p class="cf-success-body">Gracias por ponerte en contacto.<br>Te responderemos pronto.</p>
+        <button class="cf-reset-btn" id="cf-reset-btn" type="button">Enviar otro mensaje</button>
+      </div>
+    </div>
+
+    <form
+      class="contact-form"
+      id="contact-form"
+      novalidate
+    >
+      <input type="hidden" name="access_key"  value="{{ .Site.Params.web3formsKey }}" />
+      <input type="hidden" name="subject"     value="Nuevo mensaje desde Bulsara Tributo" />
+      <input type="hidden" name="from_name"   value="Bulsara Tributo — Formulario de Contacto" />
+      <input type="hidden" name="redirect"    value="false" />
+      
       <div class="form-group">
-        <label for="your-name" class="form-label">Your name</label>
+        <label for="name" class="form-label">Tu nombre</label>
         <input
           type="text"
-          id="your-name"
-          name="your-name"
+          id="name"
+          name="name"
           class="form-control"
           required
+          autocomplete="name"
         />
+        <span class="cf-field-error" aria-live="polite"></span>
       </div>
 
       <div class="form-group">
-        <label for="your-email" class="form-label">Your email</label>
+        <label for="email" class="form-label">Tu email</label>
         <input
           type="email"
-          id="your-email"
-          name="your-email"
+          id="email"
+          name="email"
           class="form-control"
           required
+          autocomplete="email"
         />
+        <span class="cf-field-error" aria-live="polite"></span>
       </div>
 
       <div class="form-group">
-        <label for="your-subject" class="form-label">Subject</label>
+        <label for="subject_field" class="form-label">Asunto</label>
         <input
           type="text"
-          id="your-subject"
-          name="your-subject"
+          id="subject_field"
+          name="subject_field"
           class="form-control"
           required
         />
+        <span class="cf-field-error" aria-live="polite"></span>
       </div>
 
       <div class="form-group">
-        <label for="your-message" class="form-label">Message</label>
+        <label for="message" class="form-label">Mensaje</label>
         <textarea
-          id="your-message"
-          name="your-message"
+          id="message"
+          name="message"
           class="form-control"
           rows="6"
           required
         ></textarea>
+        <span class="cf-field-error" aria-live="polite"></span>
       </div>
 
-      <button type="submit" class="btn btn-submit">Send</button>
+      <div class="cf-submit-row cf-field" style="--delay:0.33s">
+        <button type="submit" class="btn btn-submit" id="cf-submit-btn">
+          <span class="cf-btn-label">Enviar mensaje</span>
+          <span class="cf-btn-spinner" aria-hidden="true" hidden></span>
+        </button>
+        <p class="cf-error-banner" id="cf-error-banner" role="alert" aria-live="assertive" hidden></p>
+      </div>
 
-      <!-- If you have form status or server response messages, show them here -->
-      <div class="form-response" aria-live="polite"></div>
     </form>
   </div>
 
-  <!-- Additional contact info section -->
   <div class="contact-info">
     <p class="parrafoMobile">
       <strong>
@@ -67,6 +94,7 @@
         <a href= "mailto:{{ .Site.Params.contactEmail }}" class= "email-link">
           {{ .Site.Params.contactEmail }} 
         </a>
+      </strong>
     </p>
     <p class="parrafoMobile">
       <strong>
@@ -77,4 +105,5 @@
       </strong>
     </p>
   </div>
-</div>
+
+</section>
