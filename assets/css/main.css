@@ -625,16 +625,8 @@ video {
   right: 0px;
 }
 
-.right-4 {
-  right: 1rem;
-}
-
 .top-0 {
   top: 0px;
-}
-
-.top-4 {
-  top: 1rem;
 }
 
 .z-50 {
@@ -696,6 +688,10 @@ video {
 
 .hidden {
   display: none;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
 }
 
 .h-3 {
@@ -1424,11 +1420,6 @@ img {
 .hover\:text-black:hover {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
-}
-
-.hover\:text-gray-300:hover {
-  --tw-text-opacity: 1;
-  color: rgb(209 213 219 / var(--tw-text-opacity, 1));
 }
 
 .hover\:text-orange-200:hover {

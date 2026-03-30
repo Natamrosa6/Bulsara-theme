@@ -1,5 +1,3 @@
-{{/* ----------------------------------------------------------- */}}
-{{/* 1) Extraemos todos los src="…" de las imágenes definidas en .Content */}}
 {{ $srcAttrs := findRE `src="[^\"]+"` .Content }}
 
 <div
@@ -9,7 +7,7 @@
     images: [
       {{- /* Construimos el array de URLs para Alpine */ -}}
       {{- range $i, $attr := $srcAttrs -}}
-        '{{ replaceRE `src=\\"([^\\\"]+)\\"` `$1` $attr }}'{{ if lt (add $i 1) (len $srcAttrs) }},{{ end }}
+        '{{ replaceRE `src="([^"]+)"` `$1` $attr }}'{{ if lt (add $i 1) (len $srcAttrs) }},{{ end }}
       {{- end -}}
     ]
   }"
@@ -18,12 +16,12 @@
   <!-- 2) Grid de miniaturas -->
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
     {{- range $i, $attr := $srcAttrs -}}
-      {{ $url := replaceRE `src=\\"([^\\\"]+)\\"` `$1` $attr }}
+      {{ $url := replaceRE `src="([^"]+)"` `$1` $attr }}
       <button
         @click="currentIndex = {{ $i }}; isOpen = true"
         class="overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       >
-        <div class="aspect-w-1 aspect-h-1">
+        <div class="aspect-square overflow-hidden">
           <img
             src="{{ $url }}"
             alt="Imagen {{ add $i 1 }}"
@@ -34,28 +32,13 @@
     {{- end -}}
   </div>
 
-  <!-- 3) Modal + Carrusel -->
   <template x-if="isOpen">
     <div
       class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 px-4 py-6"
+      @click.self="isOpen = false"
       @keydown.escape.window="isOpen = false"
     >
-      <!-- Botón Cerrar -->
-      <button
-        @click="isOpen = false"
-        class="absolute top-4 right-4 text-white hover:text-gray-300"
-        aria-label="Cerrar galería"
-      >
-        <!-- Icono “X” -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
-             viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-
       <div class="relative w-full max-w-3xl">
-        <!-- Imagen ampliada -->
         <div class="w-full">
           <img
             :src="images[currentIndex]"
@@ -64,7 +47,6 @@
           />
         </div>
 
-        <!-- Botón “Prev” -->
         <div class="absolute inset-y-0 left-0 flex items-center">
           <button
             @click="currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1"
@@ -79,7 +61,6 @@
           </button>
         </div>
 
-        <!-- Botón “Next” -->
         <div class="absolute inset-y-0 right-0 flex items-center">
           <button
             @click="currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1"
@@ -94,7 +75,6 @@
           </button>
         </div>
 
-        <!-- Indicadores (puntos) opcionales -->
         <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
           <template x-for="(img, idx) in images" :key="idx">
             <button
@@ -111,4 +91,3 @@
     </div>
   </template>
 </div>
-{{/* ----------------------------------------------------------- */}}
