@@ -65,7 +65,7 @@ const showSuccess = (wrapper) => {
   const overlay = wrapper.querySelector('#cf-success');
   const form    = wrapper.querySelector('#contact-form');
   if (!overlay || !form) return;
-  form.hidden    = true;
+  form.style.display = 'none';
   overlay.hidden = false;
   overlay.removeAttribute('aria-hidden');
 };
@@ -75,7 +75,7 @@ const resetForm = (wrapper) => {
   const form    = wrapper.querySelector('#contact-form');
   if (!overlay || !form) return;
   form.reset();
-  form.hidden    = false;
+  form.style.display = 'flex';
   overlay.hidden = true;
   overlay.setAttribute('aria-hidden', 'true');
 };

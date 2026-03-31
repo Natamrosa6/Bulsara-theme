@@ -1230,7 +1230,7 @@ span.heading-b {
   margin-bottom: 30px;
 }
 
-.contact-form {
+#contact-form {
   display: flex;
   flex-direction: column;
   gap: 16px;
