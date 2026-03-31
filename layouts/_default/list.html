@@ -5,8 +5,7 @@
   <span class="heading-b"></span>
 
   {{ .Content }}
-  <!-- <div class="container mx-auto px-4"> -->
-  {{ range .Pages }}
+  {{ range .Pages.ByDate.Reverse }}
 
   <div class="mx-auto mt-10 max-w-3xl">
     <div
@@ -33,6 +32,5 @@
     </div>
   </div>
   {{ end }}
-  <!-- </div> -->
 </div>
 {{ end }}

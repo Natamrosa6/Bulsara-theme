@@ -101,10 +101,6 @@ name = 'Fotos'
 pageRef = '/photo-album'
 weight = 30
 
-[params]
-contactPhoneNumber = "+34606729279"
-contactEmail = "bulsara.tributo@gmail.com"
-
 [module]
 [module.hugoVersion]
 extended = false
