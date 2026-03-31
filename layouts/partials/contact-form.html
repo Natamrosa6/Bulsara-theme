@@ -12,12 +12,11 @@
         </div>
         <p class="cf-success-title">¡Mensaje enviado!</p>
         <p class="cf-success-body">Gracias por ponerte en contacto.<br>Te responderemos pronto.</p>
-        <button class="cf-reset-btn" id="cf-reset-btn" type="button">Enviar otro mensaje</button>
+        <button id="cf-reset-btn" type="button">Enviar otro mensaje</button>
       </div>
     </div>
 
     <form
-      class="contact-form"
       id="contact-form"
       novalidate
     >
@@ -79,7 +78,12 @@
       <div class="cf-submit-row cf-field" style="--delay:0.33s">
         <button type="submit" class="btn btn-submit" id="cf-submit-btn">
           <span class="cf-btn-label">Enviar mensaje</span>
-          <span class="cf-btn-spinner" aria-hidden="true" hidden></span>
+          <span class="cf-btn-spinner" aria-hidden="true" hidden>
+            <svg class="animate-spin mr-3 size-5" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          </span>
         </button>
         <p class="cf-error-banner" id="cf-error-banner" role="alert" aria-live="assertive" hidden></p>
       </div>
