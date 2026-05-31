@@ -53,7 +53,8 @@
   function moveCarousel(direction) {
     const track = document.getElementById('photo-carousel-track');
     const slides = track.querySelectorAll('.carousel-slide');
-    const slideWidth = slides[0].offsetWidth;
+    const gap = parseFloat(window.getComputedStyle(track).gap) || 10;
+    const slideWidth = slides[0].offsetWidth + gap;
     const maxIndex = slides.length - 1;
     
     currentCarouselIndex += direction;
@@ -109,14 +110,14 @@
 
 <style>
 .photo-carousel-container {
-  max-width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 0 48px;
 }
 
 .photo-carousel-thumbnails {
   position: relative;
   overflow: hidden;
-  max-width: 100%;
 }
 
 .carousel-wrapper {
@@ -245,4 +246,3 @@
 }
 </style>
 {{ end }}
-
