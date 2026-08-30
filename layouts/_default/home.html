@@ -97,17 +97,5 @@
     {{ end }}
   {{ end }}
 
-  <!-- Navigation Links - Vertical (before footer) -->
-  <section class="bg-gray-900 py-12 text-center">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="footer-links">
-        {{ range .Site.Menus.main }}
-          {{ if ne .Identifier "home" }}
-            <a href="{{ .URL }}" class="footer-link">{{ .Name }}</a>
-          {{ end }}
-        {{ end }}
-      </div>
-    </div>
-  </section>
 </div>
 {{ end }}
